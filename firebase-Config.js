@@ -7,8 +7,8 @@
 // app web de Firebase no es secreta, la seguridad real se controla
 // con las "Reglas" de Firestore (ver nota abajo).
 
-import { initializeApp } from "https://esm.sh/firebase@10.12.2/app";
-import { getFirestore } from "https://esm.sh/firebase@10.12.2/firestore";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAGCBZbt4pF8PneB4qhNn8wj71K19huGhw",
