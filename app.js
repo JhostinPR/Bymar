@@ -13,7 +13,7 @@ import {
     query,
     orderBy,
     writeBatch
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+} from "https://esm.sh/firebase@10.12.2/firestore";
 
 // Colección de Firestore donde viven los productos
 const productosRef = collection(db, "productos");
