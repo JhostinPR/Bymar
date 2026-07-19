@@ -2,7 +2,7 @@
 // INVENTARIO WEB (conectado a Firebase Firestore)
 // ===============================
 
-import { db } from "./firebase-config.js";
+import { db } from "./firebase-Config.js";
 import {
     collection,
     addDoc,
