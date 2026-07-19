@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bymar · Inventario</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="vista-catalogo">
+
+    <!--========== MENU ==========-->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i class="fa-solid fa-gem"></i>
+            <h2>Bymar</h2>
+        </div>
+
+        <ul>
+            <li class="active" id="navInicio">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </li>
+            <li id="navProductos">
+                <i class="fa-solid fa-box"></i>
+                <span>Productos</span>
+            </li>
+            <li id="navVentas">
+                <i class="fa-solid fa-cash-register"></i>
+                <span>Ventas</span>
+            </li>
+        </ul>
+
+    </aside>
+
+    <!--========== CONTENIDO ==========-->
+
+    <main class="contenido">
+
+        <!--========== HEADER ==========-->
+
+        <header>
+
+            <div class="titulo">
+                <h1>Bymar</h1>
+                <p>Administra tus productos fácilmente.</p>
+            </div>
+
+            <div class="busqueda">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="buscar" placeholder="Buscar producto...">
+            </div>
+
+            <div class="menu-acciones">
+                <button id="btnMenu" class="btn-menu" title="Menú">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <button id="btnAgregar" class="opcion-menu">
+                        <i class="fa-solid fa-plus"></i>
+                        Agregar producto
+                    </button>
+                    <button id="btnModoEdicion" class="opcion-menu">
+                        <i class="fa-solid fa-pen"></i>
+                        <span id="textoModoEdicion">Activar edición</span>
+                    </button>
+                    <button id="btnModoInventario" class="opcion-menu">
+                        <i class="fa-solid fa-warehouse"></i>
+                        <span id="textoModoInventario">Modo Inventario</span>
+                    </button>
+                </div>
+            </div>
+
+        </header>
+
+        <!--========== TARJETAS ==========-->
+
+        <section class="cards">
+
+            <div class="card azul">
+                <i class="fa-solid fa-box"></i>
+                <div>
+                    <h2 id="totalProductos">0</h2>
+                    <p>Modelos disponibles</p>
+                </div>
+            </div>
+
+            <div class="card verde">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <div>
+                    <h2 id="valorInventario">$0</h2>
+                    <p>Valor total del inventario</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!--========== PRODUCTOS ==========-->
+
+        <section id="contenedorProductos" class="productos">
+            <!-- Aquí aparecerán las tarjetas (Modo Inventario) -->
+        </section>
+
+        <!--========== CATÁLOGO (vista principal) ==========-->
+
+        <section id="contenedorCatalogo" class="productos catalogo">
+            <!-- Aquí aparecen las motos disponibles para la venta -->
+        </section>
+
+        <!--========== VENTAS (registrar venta + historial) ==========-->
+
+        <section id="vistaVentas" class="seccion-ventas">
+            <div class="titulo-seccion">
+                <h2><i class="fa-solid fa-cash-register"></i> Ventas</h2>
+                <p>Registra una venta o consulta el historial completo.</p>
+            </div>
+
+            <div class="tabs-ventas">
+                <button type="button" class="tab-venta activo" id="tabRegistrarVenta" data-subvista="registrar">
+                    <i class="fa-solid fa-motorcycle"></i>
+                    Registrar venta
+                </button>
+                <button type="button" class="tab-venta" id="tabHistorialVentas" data-subvista="historial">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Historial de ventas
+                </button>
+            </div>
+
+            <!-- Registrar venta: motos disponibles -->
+            <div id="subVistaRegistrar" class="sub-vista-ventas">
+                <section id="contenedorVenderProductos" class="productos catalogo">
+                    <!-- Aquí aparecen las motos disponibles para vender -->
+                </section>
+            </div>
+
+            <!-- Historial de ventas -->
+            <div id="subVistaHistorial" class="sub-vista-ventas oculto">
+
+                <div class="stats-ventas">
+                    <div class="stat-venta">
+                        <i class="fa-solid fa-receipt"></i>
+                        <div>
+                            <h3 id="totalVentasMes">0</h3>
+                            <p>Ventas este mes</p>
+                        </div>
+                    </div>
+                    <div class="stat-venta">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                        <div>
+                            <h3 id="montoVentasMes">$0</h3>
+                            <p>Monto vendido este mes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="contenedorVentas" class="ventas">
+                    <!-- Aquí aparecerán las ventas registradas -->
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!--========== MENU INFERIOR (solo celular) ==========-->
+
+    <nav class="bottom-nav" id="bottomNav">
+        <button class="bottom-nav-item active" data-vista="catalogo" title="Inicio">
+            <i class="fa-solid fa-house"></i>
+            <span>Inicio</span>
+        </button>
+        <button class="bottom-nav-item" data-vista="inventario" title="Productos">
+            <i class="fa-solid fa-box"></i>
+            <span>Productos</span>
+        </button>
+        <button class="bottom-nav-item" data-vista="ventas" title="Ventas">
+            <i class="fa-solid fa-cash-register"></i>
+            <span>Ventas</span>
+        </button>
+    </nav>
+
+    <!--========== MODAL ==========-->
+
+    <div class="modal" id="modal">
+
+        <div class="modal-contenido">
+
+            <span class="cerrar">&times;</span>
+
+            <h2 id="tituloModal">Agregar Producto</h2>
+
+            <form id="formProducto">
+
+                <label>Nombre</label>
+                <input type="text" id="nombre" required>
+
+                <label>Precio</label>
+                <input type="number" id="precio" min="0" step="0.01" required>
+
+                <label>Cantidad disponible</label>
+                <input type="number" id="cantidad" min="0" required>
+
+                <label>Descripción</label>
+                <textarea id="descripcion"></textarea>
+
+                <label>Foto del producto</label>
+                <input type="file" id="imagen" accept="image/*">
+
+                <img id="preview" src="" alt="">
+
+                <label>Enlace de la publicación en Facebook (opcional)</label>
+                <input type="url" id="facebookLink" placeholder="https://www.facebook.com/...">
+
+                <button type="submit">Guardar Producto</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="app.js"></script>
+
+</body>
+
+</html>
